@@ -29,4 +29,13 @@ describe("Voices", () => {
     render(<Voices {...props} />);
     expect(screen.queryByTestId("voice")).toHaveClass("is-favorite");
   });
+
+  test("should show empty message properly", () => {
+    const props = {
+      voices: [],
+    };
+
+    render(<Voices {...props} />);
+    expect(screen.getByTestId("voices-empty")).toBeInTheDocument();
+  });
 });
