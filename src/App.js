@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { initVoices } from "./store/actions/voicesActions";
+import config from "./config";
 
 const storage = window.sessionStorage;
 
@@ -18,13 +19,13 @@ const fetchVoices = async () => {
 function App({ collection, favorites, initVoices }) {
   useEffect(() => {
     async function loadData() {
-      let data = storage.getItem("voicemod-challenge");
+      let data = storage.getItem(config.storageKey);
       if (data) {
         initVoices(JSON.parse(data));
       } else {
         data = await fetchVoices();
         const payload = { voices: data, favorites: [] };
-        storage.setItem("voicemod-challenge", JSON.stringify(payload));
+        storage.setItem(config.storageKey, JSON.stringify(payload));
         initVoices(payload);
       }
     }
