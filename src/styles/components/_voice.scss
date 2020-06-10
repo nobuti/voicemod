@@ -84,6 +84,11 @@
     transition: all 0.15s cubic-bezier(1, 0, 0, 1);
     opacity: 0;
 
+    @media (hover: none) {
+        transform: none;
+        opacity: 1;
+    }
+    
     .is-favorite & {
         background-image: url('../../assets/voice-favourite.svg');
     }
