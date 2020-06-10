@@ -52,6 +52,12 @@ Builds the app for production to the `build` folder.
 
 CRA ships the whole environment providing some conventions from the beginning, so I chose to stick with them for convenience. As I mentioned above, ESlint and prettier are an important part of these convention rules, see the `.eslintrc` file to dig deeper.
 
+### State management
+
+The application relays on [redux](https://redux.js.org/) to manage the state. There are two data we need to track: voices and filter options. 
+
+The voices, one they are fetched, they are loaded into the store. At the same time, they are persisted in the session storage, so the next time the application is loaded, the fetch request is avoided. Whenever favorites change, the session storage is synchronized.
+
 ### Architecture
 The entry point is the `src/index.js` file, that renders the whole application to the DOM. It includes the service worker initialization as well, an important part in case we were developing a PWA.
 
@@ -64,6 +70,10 @@ From here, `components` folder includes all the code related to components. Ever
 - a `__tests__` folder with tests and snapshots files
 
 The `assets` folder includes any graphical resources, like images, icons, whatever, used in the UI, mostly for styling purposes.
+
+The `store` folder includes all reducers and action creators to be used in combination with [redux](https://redux.js.org/).
+
+And finally the `utils` folder contains some utility functions to ease data manipulation, like get the categories from the voices collection or every filter operation.
 
 ## CSS conventions
 
