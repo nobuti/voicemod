@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Voices should render properly 1`] = `
+<div>
+  <section
+    class="Section"
+    data-testid="grid"
+  >
+    <h1
+      class="Heading"
+      data-testid="grid-title"
+    >
+      Pro voices
+    </h1>
+    <ul
+      class="Grid"
+      data-testid="grid-list"
+    >
+      <li>
+        <div
+          class="Voice"
+          data-testid="voice"
+          tabindex="0"
+        >
+          <div
+            class="Voice-image"
+          >
+            <img
+              alt="Wadus"
+              src="/VoicesVoiceIcon01.png"
+            />
+            ;
+          </div>
+          <div
+            class="Voice-name"
+          >
+            Wadus
+          </div>
+          <button
+            class="Voice-favorite"
+            data-testid="voice-fav"
+          >
+            Fav me
+          </button>
+        </div>
+      </li>
+      <li>
+        <div
+          class="Voice is-favorite"
+          data-testid="voice"
+          tabindex="0"
+        >
+          <div
+            class="Voice-image"
+          >
+            <img
+              alt="Manzana"
+              src="/VoicesVoiceIcon02.png"
+            />
+            ;
+          </div>
+          <div
+            class="Voice-name"
+          >
+            Manzana
+          </div>
+          <button
+            class="Voice-favorite"
+            data-testid="voice-fav"
+          >
+            Please don't
+          </button>
+        </div>
+      </li>
+      <li>
+        <div
+          class="Voice is-favorite"
+          data-testid="voice"
+          tabindex="0"
+        >
+          <div
+            class="Voice-image"
+          >
+            <img
+              alt="Cebolleta"
+              src="/VoicesVoiceIcon01.png"
+            />
+            ;
+          </div>
+          <div
+            class="Voice-name"
+          >
+            Cebolleta
+          </div>
+          <button
+            class="Voice-favorite"
+            data-testid="voice-fav"
+          >
+            Please don't
+          </button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+`;

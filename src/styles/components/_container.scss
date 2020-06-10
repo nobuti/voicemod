@@ -1,10 +1,14 @@
 .Container {
+    min-width: rem(320);
     max-width: rem(1024);
     margin: auto;
     padding: rem(24);
 }
 
 .Container-inner {
-    max-width: calc(100% - 8rem);
     margin: auto;
+
+    @media (min-width: rem(440)) {
+        max-width: calc(100% - 8rem);
+    }
 }

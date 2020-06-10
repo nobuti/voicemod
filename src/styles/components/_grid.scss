@@ -4,3 +4,7 @@
     gap: rem(36);
     width: 100%;
 }
+
+.Grid-fullStretch {
+    grid-column: 1 / -1;
+}

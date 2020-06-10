@@ -6,6 +6,7 @@ describe("voicesReducer", () => {
     expect(voicesReducer(undefined, {})).toEqual({
       collection: null,
       favorites: null,
+      fetching: true,
     });
   });
 
@@ -23,6 +24,7 @@ describe("voicesReducer", () => {
       ...payload,
     });
 
+    expect(state.fetching).toBe(false);
     expect(state.collection.length).toBe(payload.voices.length);
     expect(state.favorites.length).toBe(payload.favorites.length);
 
@@ -47,7 +49,7 @@ describe("voicesReducer", () => {
     });
 
     expect(state.favorites.length).toBe(1);
-    expect(state.favorites[0]).toEqual(initialState.collection[0]);
+    expect(state.favorites[0]).toEqual(initialState.collection[0].id);
   });
 
   it("should remove favorite properly", () => {
@@ -57,7 +59,7 @@ describe("voicesReducer", () => {
         { id: "man", name: "man", icon: "man.png" },
         { id: "women", name: "women", icon: "women.png" },
       ],
-      favorites: [{ id: "man", name: "man", icon: "man.png" }],
+      favorites: ["man"],
     };
 
     const state = voicesReducer(initialState, {

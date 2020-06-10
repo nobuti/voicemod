@@ -4,6 +4,7 @@ import config from "../../config";
 const initialState = {
   collection: null,
   favorites: null,
+  fetching: true,
 };
 
 const storage = window.sessionStorage;
@@ -23,17 +24,11 @@ export const voicesReducer = (state = initialState, action) => {
         ...state,
         collection: action.voices,
         favorites: action.favorites,
+        fetching: false,
       };
 
     case types.ADD_FAVORITE:
-      const [favorite] = state.collection.filter(
-        (fav) => fav.id === action.voice
-      );
-
-      favorites =
-        favorite != null
-          ? [...state.favorites, favorite]
-          : [...state.favorites];
+      favorites = [...new Set([...state.favorites, action.voice])];
       syncStorage({ voices: state.collection, favorites: state.favorites });
 
       return {
@@ -42,7 +37,7 @@ export const voicesReducer = (state = initialState, action) => {
       };
 
     case types.REMOVE_FAVORITE:
-      favorites = state.favorites.filter((fav) => fav.id !== action.voice);
+      favorites = state.favorites.filter((fav) => fav !== action.voice);
       syncStorage({ voices: state.collection, favorites });
 
       return {

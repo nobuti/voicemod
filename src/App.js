@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { initVoices } from "./store/actions/voicesActions";
 import config from "./config";
+import Voices from "./components/voices";
+import Favorites from "./components/favorites";
 
 const storage = window.sessionStorage;
 
@@ -16,7 +18,7 @@ const fetchVoices = async () => {
   }
 };
 
-function App({ collection, favorites, initVoices }) {
+function App({ fetching, collection, favorites, initVoices }) {
   useEffect(() => {
     async function loadData() {
       let data = storage.getItem(config.storageKey);
@@ -31,29 +33,23 @@ function App({ collection, favorites, initVoices }) {
     }
 
     loadData();
-  }, [initVoices]);
-
-  console.log(collection, favorites);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="Container">
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {fetching ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <header>Filtro</header>
 
-      <div className="Container-inner">
-        <h1 className="Heading">Favourite voices</h1>
-      </div>
+          <div className="Container-inner">
+            <Favorites favorites={favorites} voices={collection} />
+            <Voices favorites={favorites} voices={collection} />
+          </div>
+        </>
+      )}
     </div>
   );
 }

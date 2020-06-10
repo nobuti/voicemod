@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid should render properly 1`] = `
+<div>
+  <section
+    class="Section"
+    data-testid="grid"
+  >
+    <h1
+      class="Heading"
+      data-testid="grid-title"
+    >
+      Wadus
+    </h1>
+    <ul
+      class="Grid"
+      data-testid="grid-list"
+    >
+      <li>
+        wadus
+      </li>
+      <li>
+        wadus
+      </li>
+    </ul>
+  </section>
+</div>
+`;
