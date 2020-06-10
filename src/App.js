@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { initVoices } from "./store/actions/voicesActions";
 import config from "./config";
 import Voices from "./components/voices";
 import Favorites from "./components/favorites";
-
-import Search from "./components/search";
-import Select from "./components/select";
+import Filter from "./components/filter";
+import { applyFilter } from "./utils/filter";
 
 const storage = window.sessionStorage;
 
@@ -21,7 +20,8 @@ const fetchVoices = async () => {
   }
 };
 
-function App({ fetching, collection, favorites, initVoices }) {
+function App({ fetching, collection, favorites, filter, initVoices }) {
+  const [voices, setVoices] = useState([]);
   useEffect(() => {
     async function loadData() {
       let data = storage.getItem(config.storageKey);
@@ -39,50 +39,27 @@ function App({ fetching, collection, favorites, initVoices }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const selectRandom = () => console.log("random");
+
+  useEffect(() => {
+    const voices = fetching
+      ? []
+      : applyFilter({ voices: collection, options: filter });
+    setVoices(voices);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collection, filter]);
+
   return (
     <div className="Container">
       {fetching ? (
         <div>Loading...</div>
       ) : (
         <>
-          <header className="Filter">
-            <div className="Filter-search">
-              <Search />
-            </div>
-
-            <div className="Filter-selectors">
-              <div className="Filter-withIcon Filter-select">
-                <i className="Filter-icon Filter-iconTag" />
-                <Select
-                  options={[
-                    { label: "All", value: "all" },
-                    { label: "One", value: "one" },
-                  ]}
-                  value="all"
-                />
-              </div>
-
-              <div className="Filter-withIcon Filter-select">
-                <i className="Filter-icon Filter-iconSort" />
-                <Select
-                  options={[
-                    { label: "Recently added", value: "created" },
-                    { label: "Descending", value: "desc" },
-                    { label: "Ascending", value: "asc" },
-                  ]}
-                />
-              </div>
-
-              <button className="Filter-button Filter-withIcon">
-                <i className="Filter-icon Filter-iconRandom" />
-                <span>Select a random voice</span>
-              </button>
-            </div>
-          </header>
+          <Filter voices={collection} onRandom={selectRandom} />
 
           <div className="Container-inner">
             <Favorites favorites={favorites} voices={collection} />
-            <Voices favorites={favorites} voices={collection} />
+            <Voices favorites={favorites} voices={voices} />
           </div>
         </>
       )}
@@ -90,5 +67,5 @@ function App({ fetching, collection, favorites, initVoices }) {
   );
 }
 
-const mapState = ({ voices }) => ({ ...voices });
+const mapState = ({ voices, filter }) => ({ ...voices, filter });
 export default connect(mapState, { initVoices })(App);
