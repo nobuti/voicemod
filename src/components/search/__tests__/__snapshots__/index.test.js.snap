@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Seacrh renders properly 1`] = `
+<div>
+  <div
+    class="Search"
+    data-testid="search"
+  >
+    <i
+      class="Search-icon"
+      data-testid="search-icon"
+    />
+    <input
+      class="Search-field"
+      data-testid="search-field"
+      name="wadus"
+      placeholder=""
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Dropdown from "./components/select";
+import Search from "./components/search";
 
 function App() {
   const [fruit, setFruit] = useState("banana");
-  const [sort, setSort] = useState(null);
+  const [search, setSearch] = useState("");
 
   return (
     <div className="App">
@@ -21,6 +22,8 @@ function App() {
         </a>
       </header>
 
+      <Search onChange={setSearch} />
+
       <Dropdown
         placeholder="Select Fruit"
         value={fruit}
@@ -30,16 +33,6 @@ function App() {
           { value: "banana", label: "BananaBananaBananaBananaBanana" },
           { value: "orange", label: "Orange" },
           { value: "mango", label: "Mango" },
-        ]}
-      />
-
-      <Dropdown
-        placeholder="Select sort"
-        value={sort}
-        onChange={setSort}
-        options={[
-          { value: "desc", label: "DESC" },
-          { value: "asc", label: "ASC" },
         ]}
       />
     </div>

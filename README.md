@@ -182,8 +182,11 @@ The design provided relies on a licensed font face I think. Using Google Fonts i
 
 ## Improvements
 
-- Accesibility: [TBD]
-- Legacy browser support
+- Accesibility: I'm full aware that the aria and screen readers support can (and should) be improved.
+- Usability: Related to the point above, there are some components whose their usability is not complete compared with the native version. For instance, the custom select, even having the keyboard navigation, [it lacks of other functionality](https://modulz.app/blog/under-the-spotlight-select). 
+- Legacy browser support: One of the decision I made was to focus the browser support on the greenfield browsers. In a real project, we would need metrics to support this kind of decision. And of course, the code and result should be tested in every platform and browser we support.
+- Sorting: If the number of items grows, it should be convenient to test some sorting algorithms to improve the performance, or at least to test it between different engines. For instance, V8 (the engine used by Chrome and IE Edge) uses a version of the [Tim Sort algorithm](https://v8.dev/blog/array-sort), but Chakra and Spidermonkey (IE legacy and Firefox) use some derivation of the [Merge sort algorithm](https://github.com/microsoft/ChakraCore/issues/5661#issuecomment-418203379). 
+- Background threads: Even when the sort is pretty quick, while sorting, the UI is blocked. So to fix this, we could move the code to a web worker. At this point, it's not critical at all, but in a scenario where we would need to fetch data very often to keep it up to date, it could make a difference.
 
 ## Performance
 

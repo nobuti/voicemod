@@ -1,0 +1,62 @@
+.Search {
+    --searchColor: #fff;
+    --searchBackground: #000;
+    --searchOutline: #000;
+    --searchResetOutline: #ddd;
+
+    position: relative;
+    height: rem(32);
+    display: flex;
+    align-items: center;
+    border-radius: rem(20);
+    background-color: var(--searchBackground);
+    padding: rem(8);
+
+    &.is-focused {
+        box-shadow: 0 0 4px var(--searchOutline);
+    }
+}
+
+.Search-icon {
+    background-image: url('../../assets/search.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    flex: 0 0 auto;
+    height: rem(16);
+    width: rem(16);
+    margin-right: rem(16);
+}
+
+.Search-field {
+    border: none;
+    box-shadow: none;
+    font-family: inherit;
+    color: var(--searchColor);
+    font-size: rem(16);
+    margin-right: rem(48);
+    flex: 1 1 auto;
+    background-color: transparent;
+    outline: none;
+}
+
+.Search-reset {
+    @include plain-button;
+    background-image: url('../../assets/search-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    text-align: left;
+    width: rem(24);
+    height: rem(24);
+    text-indent: -99999em;
+    position: absolute;
+    right: rem(8);
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+
+    &:focus {
+        box-shadow: 0 0 4px var(--searchResetOutline);
+    }
+}

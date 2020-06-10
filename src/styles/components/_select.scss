@@ -4,7 +4,7 @@
     --selectValueColor: #9a9a9a;
     --selectOptionColor: #888;
     --selectOptionBorderColor: #232323;
-    --selectOptionSelectedColor: #b8b8b8;
+    --selectOptionSelectedColor: #fff;
     --selectOptionsBackground: #0f0f0f;
     transform: rotateZ(0);
     font-size: rem(15);
@@ -21,6 +21,7 @@
     display: flex;
     width: 100%;
     align-items: center;
+    height: rem(32);
 
     .is-open & {
         border-radius: 4px 4px 0 0;
