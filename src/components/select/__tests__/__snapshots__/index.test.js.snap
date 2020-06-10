@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders properly 1`] = `
+<div>
+  <div
+    class="Select"
+    data-testid="select"
+    tabindex="0"
+  >
+    <div
+      class="Select-inner"
+    >
+      <button
+        class="Select-value"
+        data-testid="select-value"
+      >
+        Select Fruit
+      </button>
+      <i
+        class="Select-icon"
+        data-testid="select-icon"
+      />
+    </div>
+  </div>
+</div>
+`;

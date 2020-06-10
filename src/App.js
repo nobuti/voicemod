@@ -1,12 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Dropdown from "./components/select";
 
 function App() {
+  const [fruit, setFruit] = useState("banana");
+  const [sort, setSort] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -19,6 +20,28 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Dropdown
+        placeholder="Select Fruit"
+        value={fruit}
+        onChange={setFruit}
+        options={[
+          { value: "apple", label: "Apple" },
+          { value: "banana", label: "BananaBananaBananaBananaBanana" },
+          { value: "orange", label: "Orange" },
+          { value: "mango", label: "Mango" },
+        ]}
+      />
+
+      <Dropdown
+        placeholder="Select sort"
+        value={sort}
+        onChange={setSort}
+        options={[
+          { value: "desc", label: "DESC" },
+          { value: "asc", label: "ASC" },
+        ]}
+      />
     </div>
   );
 }

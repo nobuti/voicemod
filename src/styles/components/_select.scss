@@ -1,0 +1,73 @@
+.Select {
+    --selectBackground: #000;
+    --selectOutline: #000;
+    --selectValueColor: #9a9a9a;
+    --selectOptionColor: #888;
+    --selectOptionBorderColor: #232323;
+    --selectOptionSelectedColor: #b8b8b8;
+    --selectOptionsBackground: #0f0f0f;
+    transform: rotateZ(0);
+    font-size: rem(15);
+    outline: none;
+
+    &:focus {
+        box-shadow: 0 0 4px var(--selectOutline);
+    }
+}
+
+.Select-inner {
+    background-color: var(--selectBackground);
+    border-radius: 4px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    .is-open & {
+        border-radius: 4px 4px 0 0;
+    }
+}
+
+.Select-value {
+    @include plain-button;
+    @include ellipsis(100%);
+    color: var(--selectValueColor);
+    flex: 1;
+    font-size: inherit;
+    outline: none;
+    padding: rem(8) rem(16);
+    text-align: left;
+}
+
+.Select-icon {
+    background-image: url('../../assets/select-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    flex: 0 0 auto;
+    height: rem(16);
+    width: rem(32);
+    transition: transform 0.25s ease;
+    opacity: 0.7;
+
+    .is-open & {
+        transform: scaleY(-1);
+        opacity: 1;
+    }
+}
+
+.Select-menu {
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+}
+
+.Select-option {
+    @include ellipsis(100%);
+    background-color: var(--selectOptionsBackground);
+    border-top: 1px solid var(--selectOptionBorderColor);
+    color: var(--selectOptionColor);
+    padding: rem(8) rem(16);
+    
+    &.is-active {
+        color: var(--selectOptionSelectedColor);
+    }
+}

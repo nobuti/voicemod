@@ -1,0 +1,18 @@
+@mixin plain-button {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+}
+
+@function rem($size) {
+    @return ($size * 1px) / 16px * 1rem;
+}
+
+@mixin ellipsis ($max-width) {
+    max-width: $max-width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
