@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Voice renders properly 1`] = `
+<div>
+  <div
+    class="Voice"
+    data-testid="voice"
+    tabindex="0"
+  >
+    <div
+      class="Voice-image"
+    >
+      <img
+        alt="Wadus"
+        src="/VoicesVoiceIcon01.png"
+      />
+      ;
+    </div>
+    <div
+      class="Voice-name"
+    >
+      Wadus
+    </div>
+    <button
+      class="Voice-favorite"
+      data-testid="voice-fav"
+    >
+      Fav me
+    </button>
+  </div>
+</div>
+`;

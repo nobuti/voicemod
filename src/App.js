@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import Dropdown from "./components/select";
-import Search from "./components/search";
+import React from "react";
+
+import Voice from "./components/voice";
 
 function App() {
-  const [fruit, setFruit] = useState("banana");
-  const [search, setSearch] = useState("");
-
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="Container">
+      <header>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -22,19 +19,32 @@ function App() {
         </a>
       </header>
 
-      <Search onChange={setSearch} />
+      <div className="Container-inner">
+        <h1 className="Heading">Favourite voices</h1>
 
-      <Dropdown
-        placeholder="Select Fruit"
-        value={fruit}
-        onChange={setFruit}
-        options={[
-          { value: "apple", label: "Apple" },
-          { value: "banana", label: "BananaBananaBananaBananaBanana" },
-          { value: "orange", label: "Orange" },
-          { value: "mango", label: "Mango" },
-        ]}
-      />
+        <Voice id={1} name="Wadus" icon="VoicesVoiceIcon01.png" />
+        <Voice
+          id={2}
+          favorite={true}
+          name="Wadus"
+          icon="VoicesVoiceIcon03.png"
+        />
+        <Voice
+          id={2}
+          favorite={true}
+          name="Wadus"
+          icon="VoicesVoiceIcon02.png"
+          active={true}
+        />
+
+        <Voice
+          id={2}
+          favorite={false}
+          name="Wadus"
+          icon="VoicesVoiceIcon01.png"
+          active={true}
+        />
+      </div>
     </div>
   );
 }

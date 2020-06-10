@@ -1,0 +1,17 @@
+.Heading {
+    --headingColor: #858585;
+    display: flex;
+    align-items: center;
+    font-size: rem(20);
+    color: var(--headingColor);
+    text-transform: uppercase;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: var(--headingColor);
+        margin: 0 0 0 rem(16);
+        flex: 1 0 rem(16);
+    }
+}

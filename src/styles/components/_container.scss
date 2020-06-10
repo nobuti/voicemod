@@ -1,0 +1,10 @@
+.Container {
+    max-width: rem(1024);
+    margin: auto;
+    padding: rem(24);
+}
+
+.Container-inner {
+    max-width: calc(100% - 8rem);
+    margin: auto;
+}

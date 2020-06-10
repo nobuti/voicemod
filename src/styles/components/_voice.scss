@@ -1,0 +1,94 @@
+.Voice {
+    --voiceSize: 110;
+    --voiceColor: #d2d2d2;
+    --voiceHoverColor: #fff;
+    --voiceActiveColor: rgba(0,196,255,1);
+    --voiceBackgroundColor: #d2d2d2;
+    --voiceHoverBackgroundColor: #fff;
+    --voiceActiveBackgroundColor: linear-gradient(48deg, rgb(4, 181, 235) 0%, rgb(82, 235, 252) 100%);
+    
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    
+    &:not(.is-active):hover,
+    &:not(.is-active):focus {
+        .Voice-image {
+            background: var(--voiceHoverBackgroundColor);
+        }
+
+        .Voice-name {
+            color: var(--voiceHoverColor);
+        }
+
+        .Voice-favorite {
+            background-color: var(--voiceHoverBackgroundColor);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        .Voice-favorite {
+            background-color: var(--voiceHoverBackgroundColor);
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.Voice-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: rem(110);
+    height: rem(110);
+    border-radius: 50%;
+    background: var(--voiceBackgroundColor);
+    margin-bottom: rem(16);
+    transition: all 0.25s ease;
+
+    .is-active & {
+        background: var(--voiceActiveBackgroundColor);
+    }
+}
+
+.Voice-name {
+    font-size: rem(16);
+    font-weight: 700;
+    color: var(--voiceColor);
+    transition: all 0.25s ease;
+    text-align: center;
+
+    .is-active & {
+        color: var(--voiceActiveColor);
+    }
+}
+
+.Voice-favorite {
+    @include plain-button;
+    display: block;
+    width: rem(32);
+    height: rem(32);
+    clip-path: circle(rem(16) at center);
+    outline: none;
+    background-color: var(--voiceBackgroundColor);
+    background-image: url('../../assets/voice-favourite-off.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+
+    position: absolute;
+    right: rem(4);
+    top: rem(4);
+    transform: scale(0) translateY(rem(16));
+    transition: all 0.15s cubic-bezier(1, 0, 0, 1);
+    opacity: 0;
+
+    .is-favorite & {
+        background-image: url('../../assets/voice-favourite.svg');
+    }
+
+    .is-active & {
+        background-color: rgb(82, 235, 252) ;
+    }
+}

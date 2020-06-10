@@ -10,7 +10,7 @@ const Search = ({ placeholder = "", onChange, name = "search" }) => {
   const changeHandler = (e) => {
     const { value } = e.target;
     setValue(value);
-    onChange(value);
+    onChange != null && onChange(value);
   };
 
   const focusHandle = () => {
@@ -23,7 +23,7 @@ const Search = ({ placeholder = "", onChange, name = "search" }) => {
 
   const resetHandler = () => {
     setValue("");
-    onChange("");
+    onChange != null && onChange("");
   };
 
   return (
