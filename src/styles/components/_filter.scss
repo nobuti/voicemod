@@ -1,0 +1,97 @@
+.Filter {
+    display: flex;
+    margin-bottom: rem(56);
+    flex-direction: column;
+
+    @media (min-width: rem(840)) {
+        flex-direction: row;
+    }
+}
+
+.Filter-search {
+    width: 100%;
+    margin-bottom: rem(16);
+
+    @media (min-width: rem(840)) {
+        margin-bottom: 0;
+        width: auto;
+    }
+}
+
+
+.Filter-selectors {
+    display: flex;
+    flex-direction: column;
+    
+    @media (min-width: rem(640)) {
+        flex: 1 1 auto;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+.Filter-select {
+    flex: 1 1 100%;
+
+    @media (min-width: rem(640)) {
+        flex: 1 1 50%;
+    }
+
+    @media (min-width: rem(840)) {
+        flex: 0 0 rem(170);
+    }
+}
+
+.Filter-withIcon {
+    display: flex;
+    align-items: center;
+
+    & + & {
+        margin-top: rem(16);
+    }
+
+    @media (min-width: rem(640)) {
+        
+        & + & {
+            margin-top: 0;
+            margin-left: rem(24);
+        }
+    }
+}
+
+.Filter-button {
+    @include plain-button;
+    flex: 0 0 rem(32);
+    font-family: inherit;
+    font-size: rem(16);
+    color: #fff;
+
+    @media (min-width: rem(640)) {
+        span {
+            display: none;
+        }
+
+    }
+}
+
+.Filter-iconSort {
+    background-image: url('../../assets/order.svg');
+}
+
+.Filter-iconTag {
+    background-image: url('../../assets/filter.svg');
+}
+
+.Filter-iconRandom {
+    background-image: url('../../assets/button-random.svg');
+}
+
+.Filter-icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    flex: 0 0 auto;
+    height: rem(32);
+    width: rem(32);
+    margin-right: rem(8);
+}
+

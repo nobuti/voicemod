@@ -9,9 +9,12 @@
     transform: rotateZ(0);
     font-size: rem(15);
     outline: none;
+    position: relative;
+    width: 100%;
 
     &:focus {
         box-shadow: 0 0 4px var(--selectOutline);
+        z-index: 3;
     }
 }
 
@@ -59,6 +62,8 @@
 .Select-menu {
     border-radius: 0 0 4px 4px;
     overflow: hidden;
+    position: absolute;
+    width: 100%;
 }
 
 .Select-option {

@@ -6,6 +6,9 @@ import config from "./config";
 import Voices from "./components/voices";
 import Favorites from "./components/favorites";
 
+import Search from "./components/search";
+import Select from "./components/select";
+
 const storage = window.sessionStorage;
 
 const fetchVoices = async () => {
@@ -42,7 +45,40 @@ function App({ fetching, collection, favorites, initVoices }) {
         <div>Loading...</div>
       ) : (
         <>
-          <header>Filtro</header>
+          <header className="Filter">
+            <div className="Filter-search">
+              <Search />
+            </div>
+
+            <div className="Filter-selectors">
+              <div className="Filter-withIcon Filter-select">
+                <i className="Filter-icon Filter-iconTag" />
+                <Select
+                  options={[
+                    { label: "All", value: "all" },
+                    { label: "One", value: "one" },
+                  ]}
+                  value="all"
+                />
+              </div>
+
+              <div className="Filter-withIcon Filter-select">
+                <i className="Filter-icon Filter-iconSort" />
+                <Select
+                  options={[
+                    { label: "Recently added", value: "created" },
+                    { label: "Descending", value: "desc" },
+                    { label: "Ascending", value: "asc" },
+                  ]}
+                />
+              </div>
+
+              <button className="Filter-button Filter-withIcon">
+                <i className="Filter-icon Filter-iconRandom" />
+                <span>Select a random voice</span>
+              </button>
+            </div>
+          </header>
 
           <div className="Container-inner">
             <Favorites favorites={favorites} voices={collection} />
