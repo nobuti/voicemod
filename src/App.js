@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-import Voice from "./components/voice";
+import { initVoices } from "./store/actions/voicesActions";
 
-function App() {
+const storage = window.sessionStorage;
+
+const fetchVoices = async () => {
+  try {
+    const data = await fetch(`${process.env.PUBLIC_URL}/voices.json`);
+    const voices = await data.json();
+    return voices;
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+function App({ collection, favorites, initVoices }) {
+  useEffect(() => {
+    async function loadData() {
+      let data = storage.getItem("voicemod-challenge");
+      if (data) {
+        initVoices(JSON.parse(data));
+      } else {
+        data = await fetchVoices();
+        const payload = { voices: data, favorites: [] };
+        storage.setItem("voicemod-challenge", JSON.stringify(payload));
+        initVoices(payload);
+      }
+    }
+
+    loadData();
+  }, [initVoices]);
+
+  console.log(collection, favorites);
+
   return (
     <div className="Container">
       <header>
@@ -21,32 +52,10 @@ function App() {
 
       <div className="Container-inner">
         <h1 className="Heading">Favourite voices</h1>
-
-        <Voice id={1} name="Wadus" icon="VoicesVoiceIcon01.png" />
-        <Voice
-          id={2}
-          favorite={true}
-          name="Wadus"
-          icon="VoicesVoiceIcon03.png"
-        />
-        <Voice
-          id={2}
-          favorite={true}
-          name="Wadus"
-          icon="VoicesVoiceIcon02.png"
-          active={true}
-        />
-
-        <Voice
-          id={2}
-          favorite={false}
-          name="Wadus"
-          icon="VoicesVoiceIcon01.png"
-          active={true}
-        />
       </div>
     </div>
   );
 }
 
-export default App;
+const mapState = ({ voices }) => ({ ...voices });
+export default connect(mapState, { initVoices })(App);
