@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter should render properly 1`] = `
+<div>
+  <header
+    class="Filter"
+    data-testid="filter"
+  >
+    <div
+      class="Filter-search"
+    >
+      <div
+        class="Search"
+        data-testid="search"
+      >
+        <i
+          class="Search-icon"
+          data-testid="search-icon"
+        />
+        <input
+          class="Search-field"
+          data-testid="search-field"
+          name="search"
+          placeholder=""
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="Filter-selectors"
+    >
+      <div
+        class="Filter-withIcon Filter-select"
+      >
+        <i
+          class="Filter-icon Filter-iconTag"
+        />
+        <div
+          class="Select"
+          data-testid="select"
+          tabindex="0"
+        >
+          <div
+            class="Select-inner"
+          >
+            <button
+              class="Select-value"
+              data-testid="select-value"
+            >
+              All
+            </button>
+            <i
+              class="Select-icon"
+              data-testid="select-icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="Filter-withIcon Filter-select"
+      >
+        <i
+          class="Filter-icon Filter-iconSort"
+        />
+        <div
+          class="Select"
+          data-testid="select"
+          tabindex="0"
+        >
+          <div
+            class="Select-inner"
+          >
+            <button
+              class="Select-value"
+              data-testid="select-value"
+            >
+              Ascending
+            </button>
+            <i
+              class="Select-icon"
+              data-testid="select-icon"
+            />
+          </div>
+        </div>
+      </div>
+      <button
+        class="Filter-button Filter-withIcon"
+        data-testid="filter-random"
+      >
+        <i
+          class="Filter-icon Filter-iconRandom"
+        />
+        <span>
+          Select a random voice
+        </span>
+      </button>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`Filter should show filter state properly 1`] = `
+<div>
+  <header
+    class="Filter"
+    data-testid="filter"
+  >
+    <div
+      class="Filter-search"
+    >
+      <div
+        class="Search"
+        data-testid="search"
+      >
+        <i
+          class="Search-icon"
+          data-testid="search-icon"
+        />
+        <input
+          class="Search-field"
+          data-testid="search-field"
+          name="search"
+          placeholder=""
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="Filter-selectors"
+    >
+      <div
+        class="Filter-withIcon Filter-select"
+      >
+        <i
+          class="Filter-icon Filter-iconTag"
+        />
+        <div
+          class="Select"
+          data-testid="select"
+          tabindex="0"
+        >
+          <div
+            class="Select-inner"
+          >
+            <button
+              class="Select-value"
+              data-testid="select-value"
+            >
+              one
+            </button>
+            <i
+              class="Select-icon"
+              data-testid="select-icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="Filter-withIcon Filter-select"
+      >
+        <i
+          class="Filter-icon Filter-iconSort"
+        />
+        <div
+          class="Select"
+          data-testid="select"
+          tabindex="0"
+        >
+          <div
+            class="Select-inner"
+          >
+            <button
+              class="Select-value"
+              data-testid="select-value"
+            >
+              Ascending
+            </button>
+            <i
+              class="Select-icon"
+              data-testid="select-icon"
+            />
+          </div>
+        </div>
+      </div>
+      <button
+        class="Filter-button Filter-withIcon"
+        data-testid="filter-random"
+      >
+        <i
+          class="Filter-icon Filter-iconRandom"
+        />
+        <span>
+          Select a random voice
+        </span>
+      </button>
+    </div>
+  </header>
+</div>
+`;

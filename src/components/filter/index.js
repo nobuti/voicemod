@@ -28,7 +28,7 @@ export const Filter = ({ voices, filter, updateFilter, onRandom }) => {
   };
 
   return (
-    <header className="Filter">
+    <header className="Filter" data-testid="filter">
       <div className="Filter-search">
         <Search onChange={onChangeSearch} />
       </div>
@@ -55,6 +55,7 @@ export const Filter = ({ voices, filter, updateFilter, onRandom }) => {
         <button
           className="Filter-button Filter-withIcon"
           onClick={onClickRandom}
+          data-testid="filter-random"
         >
           <i className="Filter-icon Filter-iconRandom" />
           <span>Select a random voice</span>
