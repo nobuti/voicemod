@@ -29,6 +29,7 @@
     &:hover,
     &:focus {
         .Voice-favorite {
+            animation: Voice-hover .3s infinite alternate;
             background-color: var(--voiceHoverBackgroundColor);
             transform: scale(1) translateY(0);
             opacity: 1;
@@ -96,4 +97,13 @@
     .is-active & {
         background-color: rgb(82, 235, 252) ;
     }
+}
+
+@keyframes Voice-hover {
+	from {
+		transform: scale(1.1);
+	}
+	80% {
+		transform: scale(1);
+	}
 }

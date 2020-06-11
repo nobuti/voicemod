@@ -2,7 +2,7 @@
 
 ## Demo and source code
 
-[TBD]
+You can access a live demo in https://buti-voicemod.netlify.app/. And you can grab the source code [here](https://github.com/nobuti/voicemod/).
 
 ## Requirements and restrictions
 
@@ -190,17 +190,32 @@ Btw, [CSS custom properties are awesome](https://nobuti.com/thoughts/reusable-co
 
 The design provided relies on a licensed font face I think. Using Google Fonts is an alternative solution that is free and works across all browsers, so I use a similar web font, [Roboto Condensed](https://fonts.google.com/specimen/Roboto+Condensed), for this purpose. From a responsive point of view, I chose to follow a mobile-first strategy. There is no information about browser support, so to narrow the scope of the test challenge I will focus on provide support on major versions released in the last year. This means the application can work on legacy browser with some limitations but it's not fully optimized. 
 
+No requirements about animations has been provided. I've chosen to apply some micro animations, mostly on the Voice component. Their purpose is to delight the user, to create a moment that is engaging, to encourage them to mark voices as favourites.
+
 ## Improvements
 
 - Accesibility: I'm full aware that the aria and screen readers support can (and should) be improved.
-- Usability: Related to the point above, there are some components whose their usability is not complete compared with the native version. For instance, the custom select, even having the keyboard navigation, [it lacks of other functionality](https://modulz.app/blog/under-the-spotlight-select). 
+- Usability: Related to the point above, there are some components whose usability is not complete compared with the native version. For instance, the custom select, even having the keyboard navigation, [it lacks of other functionality](https://modulz.app/blog/under-the-spotlight-select). 
 - Legacy browser support: One of the decision I made was to focus the browser support on the greenfield browsers. In a real project, we would need metrics to support this kind of decision. And of course, the code and result should be tested in every platform and browser we support.
 - Sorting: If the number of items grows, it should be convenient to test some sorting algorithms to improve the performance, or at least to test it between different engines. For instance, V8 (the engine used by Chrome and IE Edge) uses a version of the [Tim Sort algorithm](https://v8.dev/blog/array-sort), but Chakra and Spidermonkey (IE legacy and Firefox) use some derivation of the [Merge sort algorithm](https://github.com/microsoft/ChakraCore/issues/5661#issuecomment-418203379). 
 - Background threads: Even when the sort is pretty quick, while sorting, the UI is blocked. So to fix this, we could move the code to a web worker. At this point, it's not critical at all, but in a scenario where we would need to fetch data very often to keep it up to date, it could make a difference.
 
 ## Performance
 
-[TBD]
+The overall application performance metrics are not bad, just some minor accesibility issues:
+
+![Performance metrics](https://user-images.githubusercontent.com/1366843/84346979-a1c7ac00-abb1-11ea-81fd-5c5788e12146.png)
+
+Making a deeper performance audit, there are some points where the performance could suffer some bottlenecks:
+- when filtering
+- when selecting a random voice: At this point I perform a scroll into view animation, so it should be nice to check if the fps stays at a good level
+- when mark a voice as favorite
+
+![filter](https://user-images.githubusercontent.com/1366843/84347258-637ebc80-abb2-11ea-9896-341da02fc7a8.png)
+![select](https://user-images.githubusercontent.com/1366843/84347281-6bd6f780-abb2-11ea-8aa6-5a60f829f845.png)
+![favorite](https://user-images.githubusercontent.com/1366843/84347294-71ccd880-abb2-11ea-85e3-a9fcbe86d36e.png)
+
+As you can see, only in the filter scenario the fps drops below the 60fps, but it keeped ~30fps. In this scenario the application doesn't perform any animation on the UI, so it's a trade off we can live with.
 
 ## Contributing
 
