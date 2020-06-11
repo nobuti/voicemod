@@ -21,7 +21,14 @@ const fetchVoices = async () => {
   }
 };
 
-function App({ fetching, collection, favorites, filter, initVoices }) {
+function App({
+  fetching,
+  collection,
+  indexedCollection,
+  favorites,
+  filter,
+  initVoices,
+}) {
   const [voices, setVoices] = useState([]);
   useEffect(() => {
     async function loadData() {
@@ -67,7 +74,7 @@ function App({ fetching, collection, favorites, filter, initVoices }) {
           <Filter voices={collection} onRandom={selectRandom} />
 
           <div className="Container-inner">
-            <Favorites favorites={favorites} voices={collection} />
+            <Favorites favorites={favorites} voices={indexedCollection} />
             <Voices favorites={favorites} voices={voices} />
           </div>
         </>

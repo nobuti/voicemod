@@ -4,10 +4,8 @@ import Voice from "../voice";
 import Grid from "../grid";
 
 const Favorites = ({ voices, favorites }) => {
-  const items = voices.reduce((memo, voice) => {
-    if (favorites.includes(voice.id)) {
-      memo.push(voice);
-    }
+  const items = favorites.reduce((memo, favorite) => {
+    memo.push(voices[favorite]);
     return memo;
   }, []);
 

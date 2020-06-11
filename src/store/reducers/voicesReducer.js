@@ -3,6 +3,7 @@ import config from "../../config";
 
 const initialState = {
   collection: null,
+  indexedCollection: null,
   favorites: null,
   fetching: true,
 };
@@ -20,9 +21,15 @@ export const voicesReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case types.INIT_VOICES:
+      const indexedCollection = action.voices.reduce((memo, voice) => {
+        memo[voice.id] = voice;
+        return memo;
+      }, {});
+
       return {
         ...state,
         collection: action.voices,
+        indexedCollection,
         favorites: action.favorites,
         fetching: false,
       };

@@ -5,6 +5,7 @@ describe("voicesReducer", () => {
   it("should return the initial state", () => {
     expect(voicesReducer(undefined, {})).toEqual({
       collection: null,
+      indexedCollection: null,
       favorites: null,
       fetching: true,
     });
@@ -17,7 +18,7 @@ describe("voicesReducer", () => {
         { id: "man", name: "man", icon: "man.png" },
         { id: "women", name: "women", icon: "women.png" },
       ],
-      favorites: [],
+      favorites: ["man"],
     };
     const state = voicesReducer(undefined, {
       type: types.INIT_VOICES,
@@ -27,6 +28,9 @@ describe("voicesReducer", () => {
     expect(state.fetching).toBe(false);
     expect(state.collection.length).toBe(payload.voices.length);
     expect(state.favorites.length).toBe(payload.favorites.length);
+    expect(Object.keys(state.indexedCollection).length).toBe(
+      payload.voices.length
+    );
 
     payload.voices.forEach((voice, index) => {
       expect(state.collection[index]).toEqual(voice);

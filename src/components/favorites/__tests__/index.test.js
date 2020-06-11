@@ -7,11 +7,19 @@ import Favorites from "../";
 describe("Favorites", () => {
   test("should render properly", () => {
     const props = {
-      voices: [
-        { id: "wadus", name: "Wadus", icon: "VoicesVoiceIcon01.png" },
-        { id: "manzana", name: "Manzana", icon: "VoicesVoiceIcon02.png" },
-        { id: "cebolleta", name: "Cebolleta", icon: "VoicesVoiceIcon01.png" },
-      ],
+      voices: {
+        wadus: { id: "wadus", name: "Wadus", icon: "VoicesVoiceIcon01.png" },
+        manzana: {
+          id: "manzana",
+          name: "Manzana",
+          icon: "VoicesVoiceIcon02.png",
+        },
+        cebolleta: {
+          id: "cebolleta",
+          name: "Cebolleta",
+          icon: "VoicesVoiceIcon01.png",
+        },
+      },
       favorites: ["manzana"],
     };
 
@@ -31,11 +39,19 @@ describe("Favorites", () => {
 
   test("should show empty message properly", () => {
     const props = {
-      voices: [
-        { id: "wadus", name: "Wadus", icon: "VoicesVoiceIcon01.png" },
-        { id: "manzana", name: "Manzana", icon: "VoicesVoiceIcon02.png" },
-        { id: "cebolleta", name: "Cebolleta", icon: "VoicesVoiceIcon01.png" },
-      ],
+      voices: {
+        wadus: { id: "wadus", name: "Wadus", icon: "VoicesVoiceIcon01.png" },
+        manzana: {
+          id: "manzana",
+          name: "Manzana",
+          icon: "VoicesVoiceIcon02.png",
+        },
+        cebolleta: {
+          id: "cebolleta",
+          name: "Cebolleta",
+          icon: "VoicesVoiceIcon01.png",
+        },
+      },
       favorites: [],
     };
 
