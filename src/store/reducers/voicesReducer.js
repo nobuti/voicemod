@@ -29,7 +29,7 @@ export const voicesReducer = (state = initialState, action) => {
 
     case types.ADD_FAVORITE:
       favorites = [...new Set([...state.favorites, action.voice])];
-      syncStorage({ voices: state.collection, favorites: state.favorites });
+      syncStorage({ voices: state.collection, favorites });
 
       return {
         ...state,
