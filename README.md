@@ -18,6 +18,14 @@ I'm using [eslint](https://eslint.org/) to check syntax, find problems, and enfo
 
 On top of that, I'm using [yarn](https://yarnpkg.com/) for dependency management.
 
+## Dependencies
+
+The strict dependencies of the project are:
+- `react`, `react-dom` as part of the UI framework.
+- `redux` and `react-redux` for state management. `redux` is a very nice and optimized piece of software, it adds ~6kb, but the benefits you get overpass the cost in my opinion. As an alternative, I could use `React.Context` api, but from my point of view, it's more difficult to optimize.
+- `classnames` utility library to manage which css classes are applied to a component in a more scalable way.
+- `react-spring` as animation library. Event all the micro animations are managed at css level, the transition are easy in the js domain, especially to handle when an element enter or leave the DOM.
+
 ## Install
 
 To install all dependencies, in the project directory, you should run:
@@ -205,6 +213,8 @@ No requirements about animations has been provided. I've chosen to apply some mi
 The overall application performance metrics are not bad, just some minor accesibility issues:
 
 ![Performance metrics](https://user-images.githubusercontent.com/1366843/84346979-a1c7ac00-abb1-11ea-81fd-5c5788e12146.png)
+
+The complete build gzip is ~60kb.
 
 Making a deeper performance audit, there are some points where the performance could suffer some bottlenecks:
 - when filtering
