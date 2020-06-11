@@ -59,11 +59,18 @@
 }
 
 .Filter-button {
+    --buttonOutline: #000;
+    
     @include plain-button;
     flex: 0 0 rem(32);
     font-family: inherit;
     font-size: rem(16);
     color: #fff;
+    outline: none;
+
+    &:focus {
+        box-shadow: 0 0 4px var(--buttonOutline);
+    }
 
     @media (min-width: rem(640)) {
         span {
