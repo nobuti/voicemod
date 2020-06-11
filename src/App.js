@@ -6,6 +6,7 @@ import config from "./config";
 import Voices from "./components/voices";
 import Favorites from "./components/favorites";
 import Filter from "./components/filter";
+import Loading from "./components/loading";
 import { applyFilter, random } from "./utils/filter";
 
 const storage = window.sessionStorage;
@@ -60,7 +61,7 @@ function App({ fetching, collection, favorites, filter, initVoices }) {
   return (
     <div className="Container">
       {fetching ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <>
           <Filter voices={collection} onRandom={selectRandom} />
