@@ -35,6 +35,7 @@ describe("Voice", () => {
     );
 
     expect(screen.queryByTestId("voice")).toHaveClass("is-active");
+    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
   });
 
   test("renders properly when favorite", () => {

@@ -15,6 +15,10 @@ const filter = ({ voices, categorie }) => {
 const search = ({ voices, query }) =>
   voices.filter((voice) => voice.name.includes(query));
 
+const random = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 const applyFilter = ({ voices, options }) => {
   let result = [...voices];
 
@@ -33,4 +37,4 @@ const applyFilter = ({ voices, options }) => {
   return result;
 };
 
-export { sort, filter, search, applyFilter };
+export { sort, filter, search, applyFilter, random };

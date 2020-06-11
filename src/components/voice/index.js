@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
 
@@ -17,6 +17,14 @@ export const Voice = ({
     () => (favorite ? removeFavorite(id) : addFavorite(id)),
     [addFavorite, favorite, id, removeFavorite]
   );
+  const node = useRef();
+
+  useEffect(() => {
+    if (active) {
+      node.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
   return (
     <div
@@ -26,6 +34,7 @@ export const Voice = ({
         "is-favorite": favorite,
       })}
       tabIndex={0}
+      ref={node}
     >
       <div className="Voice-image">
         <img src={`${process.env.PUBLIC_URL}/${icon}`} alt={name} />;

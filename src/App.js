@@ -6,7 +6,7 @@ import config from "./config";
 import Voices from "./components/voices";
 import Favorites from "./components/favorites";
 import Filter from "./components/filter";
-import { applyFilter } from "./utils/filter";
+import { applyFilter, random } from "./utils/filter";
 
 const storage = window.sessionStorage;
 
@@ -39,7 +39,15 @@ function App({ fetching, collection, favorites, filter, initVoices }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const selectRandom = () => console.log("random");
+  const selectRandom = () => {
+    const randomIndex = random(0, voices.length - 1);
+    const voicesWithRandom = voices.map((voice, index) => {
+      voice.active = index === randomIndex;
+      return voice;
+    });
+
+    setVoices(voicesWithRandom);
+  };
 
   useEffect(() => {
     const voices = fetching
