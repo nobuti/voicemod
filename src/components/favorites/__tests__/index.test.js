@@ -1,5 +1,7 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+
+import { customRender } from "../../../utils/test";
 import Favorites from "../";
 
 describe("Favorites", () => {
@@ -13,7 +15,13 @@ describe("Favorites", () => {
       favorites: ["manzana"],
     };
 
-    const { container } = render(<Favorites {...props} />);
+    const { container } = customRender(<Favorites {...props} />, {
+      voices: {
+        collection: props.voices,
+        favorites: props.favorites,
+      },
+    });
+
     expect(container).toMatchSnapshot();
     expect(screen.getByTestId("grid-title").textContent).toEqual(
       "Favourite voices"
@@ -31,7 +39,13 @@ describe("Favorites", () => {
       favorites: [],
     };
 
-    render(<Favorites {...props} />);
+    customRender(<Favorites {...props} />, {
+      voices: {
+        collection: props.voices,
+        favorites: props.favorites,
+      },
+    });
+
     expect(screen.getByTestId("favourite-empty")).toBeInTheDocument();
   });
 });

@@ -1,5 +1,7 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+
+import { customRender } from "../../../utils/test";
 import Voices from "../";
 
 describe("Voices", () => {
@@ -13,7 +15,13 @@ describe("Voices", () => {
       favorites: ["manzana", "cebolleta"],
     };
 
-    const { container } = render(<Voices {...props} />);
+    const { container } = customRender(<Voices {...props} />, {
+      voices: {
+        collection: props.voices,
+        favorites: props.favorites,
+      },
+    });
+
     expect(container).toMatchSnapshot();
     expect(screen.getByTestId("grid-title").textContent).toEqual("Pro voices");
   });
@@ -26,7 +34,13 @@ describe("Voices", () => {
       favorites: ["manzana"],
     };
 
-    render(<Voices {...props} />);
+    customRender(<Voices {...props} />, {
+      voices: {
+        collection: props.voices,
+        favorites: props.favorites,
+      },
+    });
+
     expect(screen.queryByTestId("voice")).toHaveClass("is-favorite");
   });
 
@@ -35,7 +49,11 @@ describe("Voices", () => {
       voices: [],
     };
 
-    render(<Voices {...props} />);
+    customRender(<Voices {...props} />, {
+      voices: {
+        collection: props.voices,
+      },
+    });
     expect(screen.getByTestId("voices-empty")).toBeInTheDocument();
   });
 });
