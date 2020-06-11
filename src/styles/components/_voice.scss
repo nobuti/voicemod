@@ -10,6 +10,7 @@
     display: inline-flex;
     flex-direction: column;
     position: relative;
+    will-change: transform;
     
     &:not(.is-active):hover,
     &:not(.is-active):focus {

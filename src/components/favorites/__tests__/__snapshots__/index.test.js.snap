@@ -16,7 +16,9 @@ exports[`Favorites should render properly 1`] = `
       class="Grid"
       data-testid="grid-list"
     >
-      <li>
+      <li
+        style="opacity: 0; transform: scale(0.7);"
+      >
         <div
           class="Voice is-favorite"
           data-testid="voice"

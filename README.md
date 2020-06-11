@@ -209,13 +209,14 @@ The overall application performance metrics are not bad, just some minor accesib
 Making a deeper performance audit, there are some points where the performance could suffer some bottlenecks:
 - when filtering
 - when selecting a random voice: At this point I perform a scroll into view animation, so it should be nice to check if the fps stays at a good level
-- when mark a voice as favorite
+- when mark a voice as favorited / unfavorited
 
 ![filter](https://user-images.githubusercontent.com/1366843/84347258-637ebc80-abb2-11ea-9896-341da02fc7a8.png)
 ![select](https://user-images.githubusercontent.com/1366843/84347281-6bd6f780-abb2-11ea-8aa6-5a60f829f845.png)
-![favorite](https://user-images.githubusercontent.com/1366843/84347294-71ccd880-abb2-11ea-85e3-a9fcbe86d36e.png)
+![favorite](https://user-images.githubusercontent.com/1366843/84371474-fed75800-abd9-11ea-944d-23baecdeb3cb.png)
+![unfavorite](https://user-images.githubusercontent.com/1366843/84371479-026adf00-abda-11ea-86e5-98d6a328a0a8.png)
 
-As you can see, only in the filter scenario the fps drops below the 60fps, but it keeped ~30fps. In this scenario the application doesn't perform any animation on the UI, so it's a trade off we can live with.
+As you can see, in the filter scenario the fps drops below the 60fps, but it keeped ~30fps. In this scenario the application doesn't perform any animation on the UI, so it's a trade off we can live with. If this problem becomes a pain, a posible solution could be to use a web worker to perform the filter operations in a different thread to not blocking the UI. During the animation of the favorite action, the fps lows to ~30fps as well, but this is related to the animation itself. The animation is performed with a js library, it should be nice to compare results in terms of performance with the same animation using only css.
 
 ## Contributing
 
